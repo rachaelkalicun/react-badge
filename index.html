@@ -5,6 +5,12 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 <body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-5 target">
+			</div>
+		</div>
+	</div>
 </body>
 
 <script type="text/jsx">
@@ -18,15 +24,33 @@
 		}
 	});
 
+	var Thumbnail = React.createClass({
+		render: function() {
+			return <div className="thumbnail">
+      	<img src={this.props.imageUrl} />
+      	<div className="caption">
+        	<h3>{this.props.header}</h3>
+        	<p>{this.props.description}</p>
+        	<p>
+        		<Badge title={this.props.title} number={this.props.number} />
+        	</p>
+      	</div>
+    	</div>
+		}
+	})
+
 	var options = {
-		title: 'Inbox',
-		number: 32
+		title: 'See Tutorials',
+		number: 32,
+		header: 'Learn React',
+		description: 'React is a fantastic, new library for making fast, dynamic pages. React is a fantastic, new library for making fast, dynamic pages.',
+		imageUrl: 'https://tleunen.github.io/react-mdl/react.svg'
 	};
 
 	// ask react to render this class
-	var element = React.createElement(Badge, options);
+	var element = React.createElement(Thumbnail, options);
 
 	// when we ask react to render this class, we will tell it where to place
 	// the rendered element in the dom
-	ReactDOM.render(element, document.body);
+	ReactDOM.render(element, document.querySelector('.target'));
 </script>
