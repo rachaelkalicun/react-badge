@@ -39,16 +39,36 @@
 		}
 	})
 
-	var options = {
-		title: 'See Tutorials',
-		number: 32,
-		header: 'Learn React',
-		description: 'React is a fantastic, new library for making fast, dynamic pages. React is a fantastic, new library for making fast, dynamic pages.',
-		imageUrl: 'https://tleunen.github.io/react-mdl/react.svg'
+	var ThumbnailList = React.createClass({
+		render: function() {
+			var list = this.props.thumbnailData.map(function(thumbnailProps){
+				return <Thumbnail {...thumbnailProps} />
+			});
+
+			return <div>
+				{list}
+			</div>
+		}
+	})
+
+	var options = { 
+		thumbnailData:	[{
+			title: 'See Tutorials',
+			number: 12,
+			header: 'Learn React',
+			description: 'React is a fantastic, new library for making fast, dynamic pages. React is a fantastic, new library for making fast, dynamic pages.',
+			imageUrl: 'https://tleunen.github.io/react-mdl/react.svg'
+		},{
+			title: 'See Tutorials',
+			number: 25,
+			header: 'Learn Gulp',
+			description: 'Gulp will speed up your development workflow. Gulp will speed up your development workflow.',
+			imageUrl: 'https://avatars0.githubusercontent.com/u/6200624?v=3&s=400'
+		}]
 	};
 
 	// ask react to render this class
-	var element = React.createElement(Thumbnail, options);
+	var element = React.createElement(ThumbnailList, options);
 
 	// when we ask react to render this class, we will tell it where to place
 	// the rendered element in the dom
